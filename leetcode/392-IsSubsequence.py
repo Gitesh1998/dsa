@@ -4,6 +4,8 @@ class Solution:
             return True
         ind = 0
         for i in t:
+            if ind == len(s):
+                return True
             if i == s[ind]:
                 ind += 1
         if ind == len(s):
