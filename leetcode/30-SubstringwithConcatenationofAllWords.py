@@ -1,53 +1,54 @@
-import copy
-
-def didWeGet(s, diction, lenoFWorld):
-    if len(s) == 0:
-        return True
-    if s[:lenoFWorld] in diction.keys() and (diction[s[:lenoFWorld]] > 0):
-        diction[s[:lenoFWorld]] -= 1
-        return didWeGet(s[lenoFWorld:], diction, lenoFWorld)
-    return False
-
-
 class Solution:
-    def findSubstring(self, s: str, words: list[str]) -> list[int]:
-        result = []
-        word_count = {}
-        wordLength = len(words[0])
+    def findSubstring(self, s, words):
+        if not s or not words:
+            return []
+
+        word_len = len(words[0])
+        total_len = len(words) * word_len
+        word_freq = {}
+        res = []
+
         for word in words:
-            if word in word_count:
-                word_count[word] += 1
+            if word in word_freq:
+                word_freq[word] += 1
             else:
-                word_count[word] = 1
+                word_freq[word] = 1
 
-        lengthOfS = len(words) * len(words[0])
-        for ind, val in enumerate(s):
-            newWordCount = copy.deepcopy(word_count)
-            if ind + lengthOfS > len(s): 
-                break
-            if s[ind:ind+wordLength] in newWordCount.keys() and (
-                newWordCount[s[ind:ind+wordLength]] > 0
-            ):
-                newWordCount[s[ind:ind+wordLength]] -= 1
-                if didWeGet(s[ind+wordLength:ind+lengthOfS], newWordCount, wordLength):
-                    result.append(ind)
-                          
-        return result
+        if len(s) < total_len:
+            return res
 
+        for i in range(word_len):
+            window_freq = {}
+            left = i
+            right = i
+            count = 0
 
-# s = "barfoothefoobarman"
-# words = ["foo", "bar"]
-s = "wordgoodgoodgoodbestword"
-words = ["word", "good", "best", "word"]
+            while right + word_len <= len(s):
+                chunk = s[right:right + word_len]
+                right += word_len
+                if chunk in word_freq:
+                    if chunk in window_freq:
+                        window_freq[chunk] += 1
+                    else:
+                        window_freq[chunk] = 1
+                    count += 1
 
-s = "barfoofoobarthefoobarman"
-words = ["bar","foo","the"]
-# s = "wordgoodgoodgoodbestword"
-# words = ["word", "good", "best", "good"]
+                    while window_freq[chunk] > word_freq[chunk]:
+                        left_chunk = s[left:left + word_len]
+                        window_freq[left_chunk] -= 1
+                        left += word_len
+                        count -= 1
 
-s = "a"
-words = ["a"]
+                    if count == len(words):
+                        res.append(left)
+                else:
+                    window_freq = {}
+                    left = right
+                    count = 0
 
-s = "bcabbcaabbccacacbabccacaababcbb"
-words = ["c", "b", "a", "c", "a", "a", "a", "b", "c"]
-print(Solution().findSubstring(s, words))
+        return res
+
+# Example usage
+s = "barfoothefoobarman"
+words = ["foo", "bar"]
+print(Solution().findSubstring(s, words))  # Output: [0, 9]
