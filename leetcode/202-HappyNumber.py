@@ -6,7 +6,6 @@ class Solution:
             sums = 0
             for i in strs:
                 sums += (int(i)*int(i))    
-            print(n, sums)
             if sums == 1:
                 return True
             if sums in dict:
