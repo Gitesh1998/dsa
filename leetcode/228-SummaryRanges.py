@@ -20,7 +20,6 @@ class Solution:
             result.append(f"{end}")
         else:
             result.append(f"{start}->{end}")
-            
         return result
 
         
