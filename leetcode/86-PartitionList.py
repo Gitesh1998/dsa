@@ -31,31 +31,16 @@ class Solution:
         fastHead = ListNode(0)
         fast = fastHead
         while head != None:
-            print(head.val)
             if head.val < x:
-                print("here")
                 slow.next = head
                 slow = slow.next
             else:
-                print("here1")
-
                 fast.next = head
                 fast = fast.next
-                
-                
             head = head.next
-        
         slow.next = None
-        fast.next = None
-        
+        fast.next = None        
         slow.next = fastHead.next
-        
-        
-        print()
-        printLinkedList(newHead)
-        print()
-        printLinkedList(fastHead)
-        print()
         return newHead.next  
 
 printLinkedList(Solution().partition(l1, 6))
