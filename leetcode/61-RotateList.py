@@ -27,8 +27,6 @@ class Solution:
     def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
         if head == None or head.next == None:
             return head
-
-
         count = 0
         temp = head
         while temp.next != None:
