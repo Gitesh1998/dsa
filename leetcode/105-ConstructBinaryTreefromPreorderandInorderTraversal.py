@@ -44,18 +44,19 @@ def divide(inorder, preorder):
             break
         i+=1
     tempNode = TreeNode(temp)
-    tempNode.right = divide(inorder[i+1:], preorder)
     tempNode.left = divide(inorder[:i], preorder)
+    tempNode.right = divide(inorder[i+1:], preorder)
     return tempNode
 
 
 class Solution:
-    def buildTree(self, inorder: list[int], postorder: list[int]) -> Optional[TreeNode]:
-        return divide(inorder, postorder[::-1])
+    def buildTree(self, preorder: list[int], inorder: list[int]) -> Optional[TreeNode]:
+        return divide(inorder, preorder)
 
+
+preorder = [3,9,20,15,7]
 inorder = [9,3,15,20,7]
-postorder = [9,15,7,20,3]
 
-levelOrder(Solution().buildTree(inorder, postorder))
+levelOrder(Solution().buildTree(inorder, inorder))
 
 
