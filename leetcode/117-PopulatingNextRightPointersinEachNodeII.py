@@ -46,12 +46,10 @@ class Solution:
                     tempS.append(i.left)
                 if i.right:
                     tempS.append(i.right)
-            print([i.val for i in tempS])
             for i in range(len(tempS)-1):
                 tempS[i].next = tempS[i+1]
             stack = tempS
     
-        print()
         return root
 
 levelOrder(Solution().connect(p))
