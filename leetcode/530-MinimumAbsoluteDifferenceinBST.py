@@ -24,10 +24,7 @@ def preOrder(root, min):
     preOrder(root.left, min)
     min.append(root.val)
     preOrder(root.right, min)
-    
-    
-    
-    
+
 class Solution:
     def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
         min = []
