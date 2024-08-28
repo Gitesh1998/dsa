@@ -1,10 +1,3 @@
-# def getWord(numDict, digits, words):
-#     if not digits:
-#         return
-#     newWord
-#     for i in words
-
-
 class Solution:
     def letterCombinations(self, digits: str) -> list[str]:
         numDict = {
