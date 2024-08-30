@@ -16,6 +16,11 @@ l1.next.next.next.next = ListNode(8)
 l1.next.next.next.next.next = ListNode(1)
 
 
+def printLinkedList(head):
+    while head != None:
+        print(head.val)
+        head = head.next
+
 
 def mergeSortedList(l1, l2):
     head = ListNode(0)
@@ -52,13 +57,6 @@ def findMid(l1):
         l1 = l1.next.next
 
     return current
-
-
-def printLinkedList(head):
-    while head != None:
-        print(head.val)
-        head = head.next
-
 
 def divide(l1):
     if not l1:
