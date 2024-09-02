@@ -19,37 +19,6 @@ def findPeakElement(nums: list[int]) -> int:
             end = mid
         mid = (start + end) // 2
 
-
-def binarySearch(nums, start, end, target):
-    if start == end and nums[start] == target:
-        return start
-    if start + 1 == end:
-        if nums[start] == target:
-            return start
-        if nums[end] == target:
-            return end
-        return -1
-
-    while start <= end:
-        print(start, end)
-        if (start+1) == end or start == end:
-            if nums[start] == target:        
-                return start
-            if nums[end] == target:
-                return end
-            return -1
-        mid = (start + end) // 2
-        if start == mid and (nums[end] == target):
-            return end
-        if nums[mid] == target:
-            return mid
-        if nums[mid] < target:
-            start = mid
-        else:
-            end = mid
-    return -1
-
-
 class Solution:
     def findMin(self, nums: list[int]) -> int:
         peak = findPeakElement(nums)
