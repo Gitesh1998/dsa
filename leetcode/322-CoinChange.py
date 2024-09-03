@@ -10,8 +10,6 @@ class Solution:
                 continue
             amo[i] = 1
 
-        print(amo)
-
         for i in range(1, amount+1):
             for j in coins:
                 if j <= i:
