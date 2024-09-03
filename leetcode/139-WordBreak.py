@@ -17,7 +17,6 @@ class Solution:
                            return True
                        newBag.add(i[dict[j]:])
             bag = newBag
-            
         return False
     
 s = "leetcode"
