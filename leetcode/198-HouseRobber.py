@@ -8,12 +8,11 @@ class Solution:
 
         for i in range(2, arrSize):
             print(i, a, b , max(b, a+nums[i]))
-            a, b = b, max(b, a+nums[i])
-            
+            a, b = b, max(b, a+nums[i])       
         return b
 
 
 nums = [1, 2, 3, 3]
 nums = [2,7,9,3,1]
-nums = [2,1]
+nums = [2,1]    
 print(Solution().rob(nums))
